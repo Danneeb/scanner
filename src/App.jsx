@@ -24,6 +24,12 @@ function App() {
         Quagga.start();
       }
     );
+    Quagga.onDetected((x) => {
+      console.log(x);
+    });
+    /* Quagga.onProcessed((callback) => {
+      console.log(callback);
+    }); */
   };
 
   const handleStop = () => {
