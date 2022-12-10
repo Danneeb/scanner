@@ -14,7 +14,7 @@ function App() {
           type: 'LiveStream',
           target: document.querySelector('#yourElement'), // Or '#yourElement' (optional)
         },
-        numOfWorkers: 2,
+        numOfWorkers: 1,
         decoder: {
           readers: ['ean_reader', 'ean_8_reader'],
         },
@@ -33,14 +33,10 @@ function App() {
     Quagga.onDetected((result) => {
       setScanned(result.codeResult.code);
       console.log(result.codeResult.code);
-      console.log('FOUND A FUCKING CODE');
+
       Quagga.stop();
     });
   };
-
-  Quagga.onProcessed((callback) => {
-    console.log(callback);
-  });
 
   const handleStop = () => {
     Quagga.stop();
