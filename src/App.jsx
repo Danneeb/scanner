@@ -14,9 +14,9 @@ function App() {
           type: 'LiveStream',
           target: document.querySelector('#yourElement'), // Or '#yourElement' (optional)
         },
-        numOfWorkers: 4,
+        numOfWorkers: 2,
         decoder: {
-          readers: ['ean_8_reader'],
+          readers: ['ean_reader', 'ean_8_reader'],
         },
         locate: true,
       },
