@@ -24,6 +24,10 @@
   color: white;
 }
 
+.yourElement {
+  zoom: 50%;
+}
+
 .App-link {
   color: #61dafb;
 }
