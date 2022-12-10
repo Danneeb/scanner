@@ -1,48 +1,22 @@
-import Quagga from 'quagga';
-import { useEffect } from 'react';
+import { useState } from 'react';
+import Scanner from './components/Scanner';
 import './App.css';
 
 function App() {
-  const handleStart = () => {
-    Quagga.init(
-      {
-        inputStream: {
-          name: 'Live',
-          type: 'LiveStream',
-          target: document.querySelector('#yourElement'), // Or '#yourElement' (optional)
-        },
-        decoder: {
-          readers: ['code_128_reader'],
-        },
-      },
-      function (err) {
-        if (err) {
-          console.log(err);
-          return;
-        }
-        console.log('Initialization finished. Ready to start');
-        Quagga.start();
-      }
-    );
-    Quagga.onDetected((x) => {
-      console.log(x);
-    });
-    /* Quagga.onProcessed((callback) => {
-      console.log(callback);
-    }); */
-  };
+  const [camera, setCamera] = useState(false);
+  const [result, setResult] = useState(null);
 
-  const handleStop = () => {
-    Quagga.stop();
+  const onDetected = (result) => {
+    setResult(result);
   };
-
+  console.log(result);
   return (
     <div className='App'>
-      <div>
-        <button onClick={handleStart}>Start</button>
-        <button onClick={handleStop}>Stop</button>
-      </div>
-      <div id='yourElement'></div>
+      <p>{result ? result : 'Scanning...'}</p>
+      <button onClick={() => setCamera(!camera)}>
+        {camera ? 'Stop' : 'Start'}
+      </button>
+      <div className=''>{camera && <Scanner onDetected={onDetected} />}</div>
     </div>
   );
 }
