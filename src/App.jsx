@@ -45,7 +45,7 @@ function App() {
 
   return (
     <div className='App'>
-      <Header />
+     
       <div>
         <button onClick={handleStart}>Start</button>
         <button onClick={handleStop}>Stop</button>
