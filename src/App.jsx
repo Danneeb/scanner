@@ -47,7 +47,7 @@ function App() {
     <div className='App'>
      
       <div>
-        <button onClick={handleStart}>Start</button>
+        <button onClick={handleStart}>Scan code</button>
         <button onClick={handleStop}>Stop</button>
       </div>
       {scanned}
