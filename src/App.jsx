@@ -34,7 +34,7 @@ function App() {
     );
     Quagga.onDetected((result) => {
       setScanned(result.codeResult.code);
-      console.log(result.codeResult.code);
+      console.log(result.codeResult);
 
       Quagga.stop();
     });
