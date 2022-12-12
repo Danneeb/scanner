@@ -8,7 +8,6 @@ function App() {
 
   
   
-
   const handleStart = () => {
     Quagga.init(
       {
@@ -36,9 +35,17 @@ function App() {
           var track = Quagga.CameraAccess.getActiveTrack();
           var capabilities = track.getCapabilities(); track.applyConstraints({ advanced: [{zoom: capabilities.zoom.max}]}).catch(e => console.log(e));
 
-
+         console.log(capabilities);
+         if (capabilities.torch) {
+          track.applyConstraints({
+            advanced: [{torch: true}]
+          })
+          .catch(e => console.log(e));
         }
       }
+        
+        }
+      
     );
     Quagga.onDetected((result) => {
       setScanned(result.codeResult.code);
@@ -84,6 +91,7 @@ function App() {
       <div>
         <button onClick={handleStart}>Scan code</button>
         <button onClick={handleStop}>Stop</button>
+    
       </div>
       {scanned}
       <div id='yourElement' className='yourElement'></div>

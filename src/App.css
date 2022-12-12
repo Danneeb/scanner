@@ -8,7 +8,7 @@
 }
 
 #interactive.viewport {
-  width: 320px;
+  width: 320;
   height: 240px;
 }
 
@@ -43,9 +43,6 @@ video {
   color: white;
 }
 
-.yourElement {
-  
-}
 
 .App-link {
   color: #61dafb;
