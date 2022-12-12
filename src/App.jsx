@@ -6,6 +6,9 @@ import './App.css';
 function App() {
   const [scanned, setScanned] = useState([]);
 
+  
+  
+
   const handleStart = () => {
     Quagga.init(
       {
@@ -29,6 +32,11 @@ function App() {
         } else {
           console.log('Initialization finished. Ready to start');
           Quagga.start();
+          console.log(Quagga.CameraAccess.getActiveTrack())
+          var track = Quagga.CameraAccess.getActiveTrack();
+          var capabilities = track.getCapabilities(); track.applyConstraints({ advanced: [{zoom: capabilities.zoom.max}]}).catch(e => console.log(e));
+
+
         }
       }
     );
