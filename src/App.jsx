@@ -1,7 +1,7 @@
 import Quagga from 'quagga';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
-import Header from './components/header/Header';
+
 
 function App() {
   const [scanned, setScanned] = useState([]);
@@ -13,16 +13,14 @@ function App() {
           name: 'Live',
           type: 'LiveStream',
           target: document.querySelector('#yourElement'), // Or '#yourElement' (optional)
-        },constraints: {
-          width: 100,
-          height: 20,
-          facing: "environment" // or user
-      },
+        },
         numOfWorkers: 1,
         decoder: {
           readers: ['ean_reader', 'ean_8_reader'],
         },
+        halfSample: true,
         locate: true,
+        patchSize: 'medium',
       },
       function (err) {
         if (err) {
